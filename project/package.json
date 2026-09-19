@@ -1,0 +1,15 @@
+{
+  "name": "expense-splitter-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "node --watch server.js", "start": "node server.js" },
+  "dependencies": {
+    "bcryptjs": "latest",
+    "cors": "latest",
+    "dotenv": "latest",
+    "express": "latest",
+    "jsonwebtoken": "latest",
+    "mysql2": "latest"
+  }
+}

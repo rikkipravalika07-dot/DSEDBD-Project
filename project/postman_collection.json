@@ -1,0 +1,17 @@
+{
+  "info": {"name":"Expense Splitter API","schema":"https://schema.getpostman.com/json/collection/v2.1.0/collection.json"},
+  "variable": [{"key":"baseUrl","value":"http://localhost:5000/api"},{"key":"token","value":""},{"key":"budgetId","value":""},{"key":"notificationId","value":""}],
+  "item": [
+    {"name":"Health Check","request":{"method":"GET","url":"{{baseUrl}}/health"}},
+    {"name":"Register","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"name\": \"Demo User\",\n  \"email\": \"demo@example.com\",\n  \"password\": \"Password123\"\n}"},"url":"{{baseUrl}}/auth/register"}},
+    {"name":"Login","request":{"method":"POST","header":[{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"email\": \"demo@example.com\",\n  \"password\": \"Password123\"\n}"},"url":"{{baseUrl}}/auth/login"}},
+    {"name":"Current User","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/auth/me"}},
+    {"name":"Create Budget","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"name\": \"Shopping Limit\",\n  \"groupId\": null,\n  \"category\": \"Shopping\",\n  \"limit\": 5000\n}"},"url":"{{baseUrl}}/budgets"}},
+    {"name":"List Budgets","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/budgets"}},
+    {"name":"Add Expense - Trigger Budget Alert","request":{"method":"POST","header":[{"key":"Authorization","value":"Bearer {{token}}"},{"key":"Content-Type","value":"application/json"}],"body":{"mode":"raw","raw":"{\n  \"title\": \"Shopping purchase\",\n  \"amount\": 4500,\n  \"date\": \"2026-09-11\",\n  \"category\": \"Shopping\",\n  \"groupId\": null,\n  \"notes\": \"Review this purchase\"\n}"},"url":"{{baseUrl}}/expenses"}},
+    {"name":"List Expenses","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/expenses"}},
+    {"name":"List Notifications","request":{"method":"GET","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/notifications"}},
+    {"name":"Mark Notification Read","request":{"method":"PATCH","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/notifications/{{notificationId}}/read"}},
+    {"name":"Mark All Notifications Read","request":{"method":"PATCH","header":[{"key":"Authorization","value":"Bearer {{token}}"}],"url":"{{baseUrl}}/notifications/read-all"}}
+  ]
+}
